@@ -22,7 +22,6 @@ public class Program
                     break;
                 case "2":
                     Console.WriteLine("Thank you for using the Greenville Revenue App, good-bye!");
-                    Console.ReadKey();
                     return;
                 default:
                     Console.WriteLine("Invalid choice. Please enter 1 or 2.");
@@ -45,21 +44,17 @@ public class Program
         Console.WriteLine("Please enter the number of contestants this year:");
         int currentYearContestants = Convert.ToInt32(Console.ReadLine());
 
-        int revenuePerContestant = 25; 
-        int revenueLastYear = lastYearContestants * revenuePerContestant;
-        int revenueCurrentYear = currentYearContestants * revenuePerContestant;
-
-        Console.WriteLine($"\nLast year's competition had {lastYearContestants} contestants, and this year's has {currentYearContestants} contestants");
-        Console.WriteLine($"Revenue expected last year was ${revenueLastYear}");
-        Console.WriteLine($"Revenue expected this year is ${revenueCurrentYear}");
-
-        if (currentYearContestants > lastYearContestants)
+        if (currentYearContestants > 2 * lastYearContestants)
         {
-        Console.WriteLine($"It is \u001b[1mtrue\u001b[0m that this year's competition is bigger than last year's.");
-         }
+            Console.WriteLine("The competition is more than twice as big this year!");
+        }
+        else if (currentYearContestants > lastYearContestants)
+        {
+            Console.WriteLine("The competition is bigger than ever!");
+        }
         else
         {
-            Console.WriteLine($"This year's competition is not bigger than last year's.");
+            Console.WriteLine("A tighter race this year! Come out and cast your vote!");
         }
 
         Console.WriteLine("************************************");
