@@ -38,11 +38,8 @@ public class Program
 
     static void CalculateRevenueYearOverYear()
     {
-        Console.WriteLine("\nPlease enter the number of contestants last year:");
-        int lastYearContestants = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine("Please enter the number of contestants this year:");
-        int currentYearContestants = Convert.ToInt32(Console.ReadLine());
+        int lastYearContestants = GetValidNumber("Please enter the number of contestants last year:");
+        int currentYearContestants = GetValidNumber("Please enter the number of contestants this year:");
 
         if (currentYearContestants > 2 * lastYearContestants)
         {
@@ -60,5 +57,23 @@ public class Program
         Console.WriteLine("************************************");
         Console.WriteLine("*  The stars shine in Greenville.  *");
         Console.WriteLine("************************************");
+    }
+    static int GetValidNumber(string prompt)
+    {
+        int number;
+        while (true)
+        {
+            Console.WriteLine(prompt);
+            string input = Console.ReadLine();
+
+            if (int.TryParse(input, out number) && number >= 0 && number <= 30)
+            {
+                return number;
+            }
+            else
+            {
+                Console.WriteLine("Invalid number. Must be between 0 and 30. Please try again.");
+            }
+        }
     }
 }
